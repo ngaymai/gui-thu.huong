@@ -56,19 +56,19 @@
 
 
     <script type="text/javascript">
-        function getLocalStream() {
-            navigator.mediaDevices
-                .getUserMedia({ video: false, audio: true })
-                .then((stream) => {
-                    window.localStream = stream; // A
-                    window.localAudio.srcObject = stream; // B
-                    window.localAudio.autoplay = true; // C
-                })
-                .catch((err) => {
-                    console.error(`you got an error: ${err}`);
-                });
-        }
-        getLocalStream();
+        // function getLocalStream() {
+        //     navigator.mediaDevices
+        //         .getUserMedia({ video: false, audio: true })
+        //         .then((stream) => {
+        //             window.localStream = stream; // A
+        //             window.localAudio.srcObject = stream; // B
+        //             window.localAudio.autoplay = true; // C
+        //         })
+        //         .catch((err) => {
+        //             console.error(`you got an error: ${err}`);
+        //         });
+        // }
+        // getLocalStream();
         document.addEventListener('DOMContentLoaded', musicPlay);
         function musicPlay() {
             if (localStorage.getItem('music') === 'on') {
@@ -86,7 +86,7 @@
 
         setTimeout(function () {
             document.getElementById('myDiv').style.display = 'block';
-        }, 62000);
+        }, 63000);
 
         setTimeout(function () {
             document.getElementById('topText').style.display = 'block';
