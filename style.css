@@ -1,0 +1,208 @@
+@import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
+
+html,
+body {
+    height: 100%;
+    font-family: 'Baloo Paaji', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    /* Thay đổi màu nền ở đây */
+
+}
+
+.container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.container>div {
+    /* font-size: 75px; */
+    text-transform: uppercase;
+    text-align: center;
+    color: #ca1010;
+    opacity: 0;
+    height: 0px;
+    top: -10px;
+}
+
+/* .container>div:nth-child(1) {
+    animation: animation 12s;
+}
+
+.container>div:nth-child(2) {
+    animation: animation 12s ;
+    animation-delay: 4s;
+}
+
+.container>div:nth-child(3) {
+    animation: animation 12s ;
+    animation-delay: 8s;
+} */
+#text1 {
+    animation: animation 14s;
+    font-size: 75px;
+}
+
+#text2 {
+    animation: animation 14s;
+    animation-delay: 6s;
+    font-size: 60px;
+}
+
+#text3 {
+    animation: animation 14s;
+    animation-delay: 12s;
+    font-size: 75px;
+}
+
+#text4 {
+    animation: animation 14s;
+    animation-delay: 18s;
+    font-size: 75px;
+}
+
+#text5 {
+    animation: animation 14s;
+    animation-delay: 24s;
+    font-size: 60px;
+}
+
+#text6 {
+    animation: animation 14s;
+    animation-delay: 30s;
+    font-size: 60px;
+}
+
+#text7 {
+    animation: animation 14s;
+    animation-delay: 36s;
+    font-size: 65px;
+}
+
+#text8 {
+    animation: animation 14s;
+    animation-delay: 42s;
+    font-size: 60px;
+}
+
+#text9 {
+    animation: animation 14s;
+    animation-delay: 48s;
+    font-size: 60px;
+}
+
+#text10 {
+    animation: animation 14s;
+    animation-delay: 54s;
+    font-size: 65px;
+}
+#text11 {
+    animation: animation 14s;
+    animation-delay: 60s;
+    font-size: 75px;
+}
+
+@keyframes animation {
+    0% {
+        opacity: 0;
+        height: auto;
+    }
+
+    16% {
+        opacity: 1;
+    }
+
+    /* 40% {
+        opacity: 0;
+    } */
+
+    60% {
+        opacity: 0;
+        height: 0px;
+    }
+
+    100% {
+        opacity: 0;
+        height: 0px;
+    }
+}
+
+
+
+/* CSS */
+
+
+/* CSS */
+.button-54 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    animation: animation1 12s;
+    animation-delay: 20s;
+    opacity: 0;
+}
+
+.button-54:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+@media (min-width: 768px) {
+    .button-54 {
+        padding: 0.25em 0.75em;
+    }
+}
+
+@keyframes animation1 {
+    0% {
+        opacity: 0;
+        height: auto;
+    }
+
+    /* 
+    16% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 0;
+        height: 0px;
+    } */
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animated {
+    animation: fadeIn 10s;
+    /* animation-delay: 22s; */
+}

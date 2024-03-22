@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Gửi Thu Hương</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.451);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv" style="display: none;">
+        <canvas id="heart"></canvas>
+        <div id="topText" class="animated">Mình hoàn thành nốt khoá học.</div>
+        <div id="bottomText" class="animated">Thu Hương nhé !!!</div>
+    </div>
+    <section class="container">
+        <div id="text1">Chào cô giáo !!!</div>
+        <div id="text2">Những ngày qua em ổn không <br> Anh thì không, anh thật sự cảm thấy... <br> rất khó chịu.</div>
+        <div id="text3">Muốn nói với em nhiều điều <br> nhưng không dám mở lời.</div>
+        <div id="text4">Anh đã suy nghĩ rất nhiều ...</div>
+        <div id="text5">Anh cảm nhận được cảm xúc của hai ta <br> vào lúc đó là thật.</div>
+        <div id="text6">Anh không muốn chỉ vì một nhầm lẫn nhỏ <br> mà chúng ta phải dừng lại.</div>
+        <div id="text7">Anh biết anh không được như em kì vọng <br> Nhưng anh không muốn phải hối tiếc <br> cũng như  không
+            cam tâm từ bỏ em.</div>
+        <div id="text8">Vậy nên anh đã quyết định <br> sẽ cố gắng hết sức một lần dù kết quả có ra sao.</div>
+        <div id="text9">Anh thực sự hy vọng <br> em sẽ bước ra khỏi vùng an toàn một lần.  </div>
+        <div id="text10">Hãy thử làm một điều gì đó điên rồ một lần <br> Và cho hai ta một cơ hội.</div>
+        <div id="text11">Nên là ...</div>
+        <!-- <button id="btn">Click me</button> -->
+        <!-- HTML !-->
+        <!-- <button onclick="musicPlay(); window.location.href = 'heart.html';" class="button-54" role="button">Button
+            54</button> -->
+
+    </section>
+
+    <!-- <script src="script.js"></script> -->
+    <audio id="audio" controls autoplay hidden loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', musicPlay);
+        function musicPlay() {
+            if (localStorage.getItem('music') === 'on') {
+                document.getElementById('audio').play();
+            }
+        }
+
+        // window.addEventListener('beforeunload', function () {
+        //     if (!document.getElementById('audio').paused) {
+        //         localStorage.setItem('music', 'on');
+        //     } else {
+        //         localStorage.setItem('music', 'off');
+        //     }
+        // });
+
+        setTimeout(function () {
+            document.getElementById('myDiv').style.display = 'block';
+        }, 62000);
+
+        setTimeout(function () {
+            document.getElementById('topText').style.display = 'block';
+        }, 66000);
+        setTimeout(function () {
+            document.getElementById('bottomText').style.display = 'block';
+        }, 68000);
+    </script>
+
+
+    <!-- <div id="bottomText">Text ở dưới</div> -->
+    <!-- <canvas id="heart"></canvas> -->
+    <style>
+        #topText,
+        #bottomText {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: white;
+            font-family: 'Marck Script', cursive;
+            display: none;
+        }
+
+        #bottomText {
+            bottom: 50px;
+        }
+
+        #topText {
+            top: 60px;
+        }
+    </style>
+
+    <script>
+        window.requestAnimationFrame =
+            window.__requestAnimationFrame ||
+            window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            (function () {
+                return function (callback, element) {
+                    var lastTime = element.__lastTime;
+                    if (lastTime === undefined) {
+                        lastTime = 0;
+                    }
+                    var currTime = Date.now();
+                    var timeToCall = Math.max(1, 33 - (currTime - lastTime));
+                    window.setTimeout(callback, timeToCall);
+                    element.__lastTime = currTime + timeToCall;
+                };
+            })();
+        window.isDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(((navigator.userAgent || navigator.vendor || window.opera)).toLowerCase()));
+        var loaded = false;
+        var init = function () {
+            if (loaded) return;
+            loaded = true;
+            var mobile = window.isDevice;
+            var koef = mobile ? 0.5 : 1;
+            var canvas = document.getElementById('heart');
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width = koef * innerWidth;
+            var height = canvas.height = koef * innerHeight;
+            var rand = Math.random;
+            ctx.fillStyle = "rgba(0,0,0,1)";
+            ctx.fillRect(0, 0, width, height);
+
+
+            var heartPosition = function (rad) {
+                //return [Math.sin(rad), Math.cos(rad)];
+                return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
+            };
+            var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
+                return [dx + pos[0] * sx, dy + pos[1] * sy];
+            };
+
+
+            window.addEventListener('resize', function () {
+                width = canvas.width = koef * innerWidth;
+                height = canvas.height = koef * innerHeight;
+                ctx.fillStyle = "rgba(0,0,0,1)";
+                ctx.fillRect(0, 0, width, height);
+            });
+
+
+            var traceCount = mobile ? 20 : 50;
+            var pointsOrigin = [];
+            var i;
+            var dr = mobile ? 0.3 : 0.1;
+            for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
+            for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
+            for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+            var heartPointsCount = pointsOrigin.length;
+
+
+            var targetPoints = [];
+            var pulse = function (kx, ky) {
+                for (i = 0; i < pointsOrigin.length; i++) {
+                    targetPoints[i] = [];
+                    targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
+                    targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
+                }
+            };
+
+
+            var e = [];
+            for (i = 0; i < heartPointsCount; i++) {
+                var x = rand() * width;
+                var y = rand() * height;
+                e[i] = {
+                    vx: 0,
+                    vy: 0,
+                    R: 2,
+                    speed: rand() + 5,
+                    q: ~~(rand() * heartPointsCount),
+                    D: 2 * (i % 2) - 1,
+                    force: 0.2 * rand() + 0.7,
+                    f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+                    trace: []
+                };
+                for (var k = 0; k < traceCount; k++) e[i].trace[k] = { x: x, y: y };
+            }
+
+
+            var config = {
+                traceK: 0.4,
+                timeDelta: 0.01
+            };
+
+
+            var time = 0;
+            var loop = function () {
+                var n = -Math.cos(time);
+                pulse((1 + n) * .5, (1 + n) * .5);
+                time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
+                ctx.fillStyle = "rgba(0,0,0,.1)";
+                ctx.fillRect(0, 0, width, height);
+                for (i = e.length; i--;) {
+                    var u = e[i];
+                    var q = targetPoints[u.q];
+                    var dx = u.trace[0].x - q[0];
+                    var dy = u.trace[0].y - q[1];
+                    var length = Math.sqrt(dx * dx + dy * dy);
+                    if (10 > length) {
+                        if (0.95 < rand()) {
+                            u.q = ~~(rand() * heartPointsCount);
+                        }
+                        else {
+                            if (0.99 < rand()) {
+                                u.D *= -1;
+                            }
+                            u.q += u.D;
+                            u.q %= heartPointsCount;
+                            if (0 > u.q) {
+                                u.q += heartPointsCount;
+                            }
+                        }
+                    }
+                    u.vx += -dx / length * u.speed;
+                    u.vy += -dy / length * u.speed;
+                    u.trace[0].x += u.vx;
+                    u.trace[0].y += u.vy;
+                    u.vx *= u.force;
+                    u.vy *= u.force;
+                    for (k = 0; k < u.trace.length - 1;) {
+                        var T = u.trace[k];
+                        var N = u.trace[++k];
+                        N.x -= config.traceK * (N.x - T.x);
+                        N.y -= config.traceK * (N.y - T.y);
+                    }
+                    ctx.fillStyle = u.f;
+                    for (k = 0; k < u.trace.length; k++) {
+                        ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
+                    }
+                }
+                //ctx.fillStyle = "rgba(255,255,255,1)";
+                //for (i = u.trace.length; i--;) ctx.fillRect(targetPoints[i][0], targetPoints[i][1], 2, 2);
+
+
+                window.requestAnimationFrame(loop, canvas);
+            };
+            loop();
+        };
+
+
+        var s = document.readyState;
+        if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
+        else document.addEventListener('DOMContentLoaded', init, false);
+    </script>
+</body>
+
+</html>
